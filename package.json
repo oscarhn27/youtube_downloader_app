@@ -1,0 +1,33 @@
+{
+  "name": "Youtube Downloader",
+  "version": "1.0.0",
+  "description": "Aplicación para descargar videos de YouTube con interfaz moderna",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "keywords": ["youtube", "downloader", "video", "electron", "yt-dlp"],
+  "author": "YouTube Downloader App",
+  "license": "MIT",
+  "homepage": "https://github.com/your-repo/yt-dwnldr-app",
+  "packageManager": "pnpm@10.11.0",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.9.0",
+    "@electron-forge/maker-deb": "^7.9.0",
+    "@electron-forge/maker-rpm": "^7.9.0",
+    "@electron-forge/maker-squirrel": "^7.9.0",
+    "@electron-forge/maker-zip": "^7.9.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.9.0",
+    "@electron-forge/plugin-fuses": "^7.9.0",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^38.1.1"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
+    "yt-dlp-wrap": "^2.3.12"
+  }
+}
