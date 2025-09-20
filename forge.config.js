@@ -5,7 +5,7 @@ module.exports = {
       'bin/yt-dlp',
       'bin/yt-dlp.exe',
     ],
-    icon: '/icons/icon'
+    icon: 'icons/icon'
   },
   rebuildConfig: {},
   makers: [
@@ -31,9 +31,9 @@ module.exports = {
       name: '@electron-forge/maker-squirrel',
       config: {
         options: {
-          name: 'YouTube Downloader',
+          name: 'YouTube.Downloader',
           description: 'Aplicación para descargar videos de YouTube con interfaz moderna',
-          authors: 'YouTube Downloader App',
+          authors: 'Óscar Hernández',
           homepage: 'https://github.com/oscarhn27/youtube_downloader_app',
         },
       },
@@ -43,10 +43,10 @@ module.exports = {
     //   name: '@electron-forge/maker-rpm',
     //   config: {
     //     options: {
-    //       maintainer: 'YouTube Downloader App',
-    //       homepage: 'https://github.com/your-repo/yt-dwnldr-app',
-    //       description: 'Aplicación para descargar videos de YouTube con interfaz moderna',
-    //       productDescription: 'Descarga videos de YouTube en formato MP3 o MP4 con una interfaz moderna y fácil de usar.',
+    //        maintainer: 'Óscar Hernández',
+    //        homepage: 'https://github.com/oscarhn27/youtube_downloader_app',
+    //        description: 'Aplicación para descargar videos de YouTube con interfaz moderna',
+    //        productDescription: 'Descarga videos de YouTube en formato MP3 o MP4 con una interfaz moderna y fácil de usar.',
     //     },
     //   },
     // },

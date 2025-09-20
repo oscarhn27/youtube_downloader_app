@@ -1,5 +1,5 @@
 {
-  "name": "Youtube Downloader",
+  "name": "youtube-downloader",
   "version": "1.0.0",
   "description": "Aplicación para descargar videos de YouTube con interfaz moderna",
   "main": "index.js",
