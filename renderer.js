@@ -13,8 +13,7 @@
  * @property {() => Promise<string|null>} selectDownloadDirectory
  */
 
-/** @type {(Window & typeof globalThis) & { yt?: YTAPI }} */
-const w = window
+const { yt } = /** @type {(Window & typeof globalThis) & { yt: YTAPI }} */(window)
 
 /**
  * Valida si una URL es de YouTube
@@ -49,7 +48,7 @@ function showMessage(message, type = 'success') {
   messageEl.textContent = message
   
   const form = document.querySelector('.download-form')
-  if (form && form.parentNode) {
+  if (form?.parentNode) {
     form.parentNode.insertBefore(messageEl, form.nextSibling)
     
     // Auto-remove after 3 seconds
@@ -105,15 +104,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   
   if (!form || !input || !button || !downloadPathInput || !selectDirectoryBtn || !settingsToggleBtn || !downloadSettings || !versionEl) return
   
-  versionEl.innerText = await w.yt?.getVersion() ?? 'Not found';
+  versionEl.innerText = await yt?.getVersion() ?? 'Not found';
   // Cargar directorio actual
-  if (w.yt && typeof w.yt.getDownloadDirectory === 'function') {
-    try {
-      const currentPath = await w.yt.getDownloadDirectory()
-      downloadPathInput.value = currentPath
-    } catch (error) {
-      console.error('Error al obtener directorio:', error)
-    }
+  try {
+    const currentPath = await yt.getDownloadDirectory()
+    downloadPathInput.value = currentPath
+  } catch (error) {
+    console.error('Error al obtener directorio:', error)
   }
 
   // Manejar toggle de configuración
@@ -131,16 +128,14 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   // Manejar selección de directorio
   selectDirectoryBtn.addEventListener('click', async () => {
-    if (w.yt && typeof w.yt.selectDownloadDirectory === 'function') {
-      try {
-        const selectedPath = await w.yt.selectDownloadDirectory()
-        if (selectedPath) {
-          downloadPathInput.value = selectedPath
-        }
-      } catch (error) {
-        console.error('Error al seleccionar directorio:', error)
-        showMessage('Error al seleccionar directorio', 'error')
+    try {
+      const selectedPath = await yt.selectDownloadDirectory()
+      if (selectedPath) {
+        downloadPathInput.value = selectedPath
       }
+    } catch (error) {
+      console.error('Error al seleccionar directorio:', error)
+      showMessage('Error al seleccionar directorio', 'error')
     }
   })
 
@@ -158,17 +153,15 @@ window.addEventListener('DOMContentLoaded', async () => {
       return
     }
 
-    if (w.yt && typeof w.yt.fetchInfo === 'function') {
-      setButtonLoading(true)
-      showMessage('Obteniendo información del video...', 'success')
-      try {
-        const data = await w.yt.fetchInfo(url)
-        renderPreview(data, url)
-      } catch (e) {
-        showMessage('No se pudo obtener la información del video', 'error')
-      } finally {
-        setButtonLoading(false)
-      }
+    setButtonLoading(true)
+    showMessage('Obteniendo información del video...', 'success')
+    try {
+      const data = await yt.fetchInfo(url)
+      renderPreview(data, url)
+    } catch (e) {
+      showMessage('No se pudo obtener la información del video', 'error')
+    } finally {
+      setButtonLoading(false)
     }
   })
 })
@@ -215,8 +208,6 @@ function renderPreview(info, url) {
  * @param {'mp3'|'mp4'} format 
  */
 async function startDownload(url, format) {
-  if (!w.yt || typeof w.yt.startDownload !== 'function') return
-  
   // Mostrar barra de progreso
   const progressSection = document.getElementById('progress')
   /** @type {HTMLProgressElement | null} */
@@ -231,7 +222,7 @@ async function startDownload(url, format) {
   }
   
   // Configurar listener de progreso
-  w.yt.onDownloadProgress((event, progressData) => {
+  yt.onDownloadProgress((event, progressData) => {
     if (progressEl && progressText && progressData.total) {
       progressEl.max = progressData.total
       progressEl.value = progressData.downloaded || 0
@@ -243,7 +234,7 @@ async function startDownload(url, format) {
   })
   
   // Configurar listeners para respuestas
-  w.yt.onDownloadComplete((event, data) => {
+  yt.onDownloadComplete((event, data) => {
     if (progressText) {
       progressText.textContent = '¡Descarga completada!'
     }
@@ -257,14 +248,12 @@ async function startDownload(url, format) {
     }, 2000)
     
     // Limpiar listeners
-    if (w.yt) {
-      w.yt.removeAllListeners('download-complete')
-      w.yt.removeAllListeners('download-error')
-      w.yt.removeAllListeners('download-progress')
-    }
+    yt.removeAllListeners('download-complete')
+    yt.removeAllListeners('download-error')
+    yt.removeAllListeners('download-progress')
   })
   
-  w.yt.onDownloadError((event, error) => {
+  yt.onDownloadError((event, error) => {
     console.error(JSON.stringify(error));
     showMessage(`Error: ${error.error}`, 'error')
     if (progressSection) {
@@ -272,18 +261,16 @@ async function startDownload(url, format) {
     }
     
     // Limpiar listeners
-    if (w.yt) {
-      w.yt.removeAllListeners('download-complete')
-      w.yt.removeAllListeners('download-error')
-      w.yt.removeAllListeners('download-progress')
-    }
+    yt.removeAllListeners('download-complete')
+    yt.removeAllListeners('download-error')
+    yt.removeAllListeners('download-progress')
   })
   
   // Iniciar descarga
-  w.yt.startDownload({ url, format })
+  yt.startDownload({ url, format })
 }
 
-w.yt?.onDownloadLog((event, payload) => {
+yt?.onDownloadLog((event, payload) => {
   console.log(payload)
 })
 
