@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
-contextBridge.exposeInMainWorld('yt', {
+/** @type {import('./types/yt').YTAPI} */
+const ytAPI = {
   fetchInfo:                (url)     => ipcRenderer.invoke('fetch-video-info', url),
   getDownloadDirectory:     ()        => ipcRenderer.invoke('get-download-directory'),
   getVersion:               ()        => ipcRenderer.invoke('version-info'),
@@ -12,6 +13,7 @@ contextBridge.exposeInMainWorld('yt', {
   removeAllListeners:       (channel) => ipcRenderer.removeAllListeners(channel),
   selectDownloadDirectory:  ()        => ipcRenderer.invoke('select-download-directory'),
   startDownload:            (payload) => ipcRenderer.send('start-download', payload),
-})
+}
 
+contextBridge.exposeInMainWorld('yt', ytAPI)
 
