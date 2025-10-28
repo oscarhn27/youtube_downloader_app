@@ -37,6 +37,15 @@ export default {
         },
       },
     },
+    {
+      name: '@electron-forge/maker-dmg',
+      config: {
+        name: 'YouTube.Downloader',
+        description: 'Aplicación para descargar videos de YouTube con interfaz moderna',
+        authors: 'Óscar Hernández',
+        homepage: 'https://github.com/oscarhn27/youtube_downloader_app',
+      }
+    }
     // Solo usar RPM si tienes rpmbuild instalado
     // {
     //   name: '@electron-forge/maker-rpm',
