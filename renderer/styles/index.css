@@ -1,0 +1,292 @@
+body {
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.header-icon {
+    height: 100px;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.title {
+    font-size: 28px;
+    margin: 0;
+    text-align: center;
+}
+
+.settings-btn {
+    background: transparent;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.settings-btn:hover {
+    background: #374151;
+    color: #fff;
+    border-color: #4b5563;
+}
+
+.settings-btn:active {
+    transform: scale(0.95);
+}
+
+.download-settings {
+    width: 100%;
+    max-width: 640px;
+    margin-bottom: 16px;
+}
+
+.directory-selector {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.directory-selector label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #e5e5e5;
+}
+
+.path-display {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.path-display input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: 13px;
+    font-family: monospace;
+}
+
+.path-display input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.btn-secondary {
+    background: #374151;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.btn-secondary:hover {
+    background: #4b5563;
+}
+
+.download-form {
+    display: flex;
+    width: 100%;
+    max-width: 640px;
+    gap: 8px;
+}
+
+.download-form input[type="url"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+    outline: none;
+}
+
+.download-form input[type="url"]::placeholder {
+    color: #8a8a8a;
+}
+
+.download-form button {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 0;
+    background: #e11d48;
+    color: #fff;
+    cursor: pointer;
+}
+
+.download-form button:hover:not(:disabled) {
+    background: #be123c;
+}
+
+.download-form button:disabled {
+    background: #6b7280;
+    cursor: not-allowed;
+}
+
+.download-form input:disabled {
+    background: #1f1f1f;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+.message {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-align: center;
+    animation: slideIn 0.3s ease-out;
+}
+
+.message-success {
+    background: #065f46;
+    color: #10b981;
+    border: 1px solid #10b981;
+}
+
+.message-error {
+    background: #7f1d1d;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.hidden { display: none; }
+
+.preview {
+    width: 100%;
+    max-width: 640px;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.preview-card {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.preview-thumb {
+    width: 160px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #111;
+}
+
+.preview-title {
+    font-size: 16px;
+    margin: 0 0 8px;
+}
+
+.preview-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-mp4 { background: #2563eb; }
+.btn-mp4:hover { background: #1d4ed8; }
+.btn-mp3 { background: #059669; }
+.btn-mp3:hover { background: #047857; }
+
+.progress {
+    width: 100%;
+    max-width: 640px;
+    margin-top: 16px;
+}
+
+
+progress {
+    width: 100%;
+    height: 14px;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #333;
+    border-radius: 7px;
+}
+
+progress::-webkit-progress-value {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    border-radius: 7px;
+}
+
+progress::-moz-progress-bar {
+    background: linear-gradient(90deg, #2563eb, #3b82f6);
+    border-radius: 7px;
+}
+
+.progress-text {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #9ca3af;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; img-src 'self' https://i.ytimg.com https://img.youtube.com"
+    />
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; img-src 'self' https://i.ytimg.com https://img.youtube.com"
+    />
+    <link rel="stylesheet" href="styles/index.css">
+    <title>Descargar videos de YouTube</title>
+    <script defer type="module" src="index.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <img src="icons/icon.png" alt="icon" class="header-icon">
+      <header class="app-header">
+        <h1 class="title">Descarga videos de YouTube</h1>
+        <footer>
+          <span id="version"></span>
+        </footer>
+        <button id="settings-toggle" class="settings-btn" title="Configuración">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </header>
+      
+      <div class="download-settings hidden" id="download-settings">
+        <div class="directory-selector">
+          <label for="download-path">Directorio de descarga:</label>
+          <div class="path-display">
+            <input id="download-path" type="text" readonly />
+            <button id="select-directory" class="btn btn-secondary">Seleccionar</button>
+          </div>
+        </div>
+      </div>
+      
+      <form class="download-form" action="#" method="get">
+        <label for="yt-url" class="sr-only">URL de YouTube</label>
+        <input id="yt-url" name="url" type="url" placeholder="Pega la URL de YouTube" required />
+        <button type="submit">Cargar url</button>
+      </form>
+      <section id="preview" class="preview hidden"></section>
+      <section id="progress" class="progress hidden">
+        <progress id="progress-el" value="0" max="1"></progress>
+        <div class="progress-text" id="progress-text">Preparando…</div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test'
-import path from 'path'
-import { pathToFileURL } from 'url'
+import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 test.describe('Integración - API expuesta por preload (mock en navegador)', () => {
   test.beforeEach(async ({ page }) => {
-    const fileUrl = pathToFileURL(path.resolve(__dirname, '../../index.html')).toString()
+    const fileUrl = pathToFileURL(path.resolve(import.meta.dirname, '../../renderer', 'index.html')).toString()
     await page.addInitScript(() => {
       // @ts-ignore
       window.yt = {

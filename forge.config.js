@@ -1,9 +1,8 @@
-module.exports = {
+export default {
   packagerConfig: {
     asar: true,
     extraResource: [
-      'bin/yt-dlp',
-      'bin/yt-dlp.exe',
+      'bin',
     ],
     icon: 'icons/icon'
   },

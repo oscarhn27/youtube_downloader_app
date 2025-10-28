@@ -1,6 +1,6 @@
-import { isValidYouTubeUrl } from "../../src/validation.js";
-import { escapeHtml } from "../../src/utils.js";
 import { test, expect } from "@playwright/test";
+import { escapeHtml } from "../../renderer/src/utils";
+import { isValidYouTubeUrl } from "../../renderer/src/validation.js";
 
 const { describe, beforeEach } = test;
 

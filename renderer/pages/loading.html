@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <base href="..">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styles/index.css">
+        <script type="module" src="src/pages/loading.js"></script>
+        <style>
+            /* HTML: <div class="loader"></div> */
+            .loader {
+                width: 50px;
+                aspect-ratio: 1;
+                display: grid;
+            }
+
+            .loader:before,
+            .loader:after {
+                content: "";
+                grid-area: 1/1;
+                border-radius: 50%;
+                background: #e11d48;
+                -webkit-mask: repeating-linear-gradient(#000 0 5px, #0000 0 10px);
+                animation: l35 1.5s infinite;
+            }
+
+            .loader:after {
+                -webkit-mask: repeating-linear-gradient(#0000 0 5px, #000 0 10px);
+                --s: -1;
+            }
+
+            .downloading {
+                visibility: hidden;
+            }
+
+            @keyframes l35 {
+
+                0%,
+                10% {
+                    transform: translate(0) rotate(0)
+                }
+
+                35% {
+                    transform: translate(calc(var(--s, 1)*50%)) rotate(0)
+                }
+
+                66% {
+                    transform: translate(calc(var(--s, 1)*50%)) rotate(calc(var(--s, 1)*180deg))
+                }
+
+                90%,
+                100% {
+                    transform: translate(0) rotate(calc(var(--s, 1)*180deg))
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="container">
+            <img src="icons/icon.png" alt="icon" class="header-icon">
+            <div class="loader"></div>
+            <span class="downloading">Descargando dependencias desactualizadas...</span>
+        </main>
+    </body>
+
+</html>

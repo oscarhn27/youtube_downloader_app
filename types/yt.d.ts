@@ -24,6 +24,7 @@ export interface YTAPI {
   fetchInfo: (url: string) => Promise<VideoInfo>
   getDownloadDirectory: () => Promise<string>
   getVersion: () => Promise<string | undefined>
+  onDownloadBinYtDlp: (cb: (event: any, data: any) => void) => void
   onDownloadComplete: (cb: (event: any, data: any) => void) => void
   onDownloadError: (cb: (event: any, error: { error: string }) => void) => void
   onDownloadLog: (cb: (event: any, payload: any) => void) => void

@@ -1,8 +1,9 @@
 {
   "name": "youtube-downloader",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Aplicación para descargar videos de YouTube con interfaz moderna",
-  "main": "index.js",
+  "type": "module",
+  "main": "main/main.js",
   "scripts": {
     "test": "playwright test",
     "dev": "electron .",
@@ -20,7 +21,6 @@
   "author": "YouTube Downloader App",
   "license": "MIT",
   "homepage": "https://github.com/your-repo/yt-dwnldr-app",
-  "packageManager": "pnpm@10.11.0",
   "devDependencies": {
     "@electron-forge/cli": "^7.9.0",
     "@electron-forge/maker-deb": "^7.9.0",
