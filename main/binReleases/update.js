@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import YTDlpWrapModule from "yt-dlp-wrap";
-import { binResourcesPath, binYtDlpFilename, isPackaged, isWin32 } from "../config.js";
-import { copyBinaries } from "./copyBinaries.js";
+import { binYtDlpFilename, isPackaged, isWin32 } from "../config.js";
 import { BrowserWindow } from "electron";
+import { getYtDlpWrapPath } from '../download/ytDlp.js';
 
 /** @type {typeof YTDlpWrapModule} */
 // @ts-ignore
@@ -11,9 +11,8 @@ const YTDlpWrap = YTDlpWrapModule.default;
 
 export async function update(lastVersion) {
   BrowserWindow.getAllWindows()[0].webContents.send("download-bin-yt-dlp");
-  YTDlpWrap.downloadFile;
-  return downloadFromGithub(binResourcesPath, lastVersion)
-    .then(copyBinaries)
+  const binPath = getYtDlpWrapPath()
+  return downloadFromGithub(binPath, lastVersion)
     .then(() => console.log("Descargado con exito"))
     .catch((err) => console.error("An error ocurred", err));
 }
