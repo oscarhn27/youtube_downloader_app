@@ -3,6 +3,7 @@
 Aplicación de escritorio construida con Electron para descargar videos de YouTube en formatos MP3 (audio) y MP4 (video), con selección de carpeta de descarga y una interfaz simple y moderna.
 
 ### Tabla de contenidos
+- [Tabla de contenidos](#tabla-de-contenidos)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologías utilizadas](#tecnologías-utilizadas)
 - [Requisitos](#requisitos)
@@ -144,6 +145,10 @@ forge.config.js           # configuración de Electron Forge
 
 ![Saving - progreso de descarga](docs/saving.png)
 
+- **Listas de reproducción**: Selecciona los vídeos de una lista de reproducción y guárdalos todos a la vez.
+
+![Playlist](docs/playlist.png)
+
 ---
 
 ### Solución de problemas
@@ -156,7 +161,6 @@ forge.config.js           # configuración de Electron Forge
 ---
 
 ### Próximos pasos (roadmap)
-- **Descarga de playlists completas**: permitir pegar una URL de playlist y descargar todos o algunos videos.
 - **Descarga de canales**: introducir la URL de un canal y listar los videos disponibles.
 - **Selección de elementos**: UI para seleccionar qué videos de la playlist/canal descargar.
 - **Cola de descargas y reintentos**: gestionar múltiples descargas con progreso individual.

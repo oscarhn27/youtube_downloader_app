@@ -3,6 +3,7 @@ const { contextBridge, ipcRenderer } = require('electron')
 /** @type {import('../types/yt').YTAPI} */
 const ytAPI = {
   fetchInfo:                (url)     => ipcRenderer.invoke('fetch-video-info', url),
+  fetchPlaylistInfo:        (url)     => ipcRenderer.invoke('fetch-playlist-info', url),
   getDownloadDirectory:     ()        => ipcRenderer.invoke('get-download-directory'),
   getVersion:               ()        => ipcRenderer.invoke('version-info'),
   onDownloadBinYtDlp:       (cb)      => ipcRenderer.once('download-bin-yt-dlp', cb),
@@ -10,10 +11,13 @@ const ytAPI = {
   onDownloadError:          (cb)      => ipcRenderer.on('download-error', cb),
   onDownloadLog:            (payload) => ipcRenderer.on('download-log', payload),
   onDownloadProgress:       (cb)      => ipcRenderer.on('download-progress', cb),
+  onPlaylistVideoComplete:  (cb)      => ipcRenderer.on('playlist-video-complete', cb),
+  onPlaylistVideoProgress:  (cb)      => ipcRenderer.on('playlist-video-progress', cb),
   onVideoInfo:              (cb)      => ipcRenderer.on('video-info', cb),
   removeAllListeners:       (channel) => ipcRenderer.removeAllListeners(channel),
   selectDownloadDirectory:  ()        => ipcRenderer.invoke('select-download-directory'),
   startDownload:            (payload) => ipcRenderer.send('start-download', payload),
+  startPlaylistDownload:    (payload) => ipcRenderer.send('start-playlist-download', payload),
 }
 
 contextBridge.exposeInMainWorld('yt', ytAPI)

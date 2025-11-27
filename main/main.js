@@ -3,6 +3,7 @@ import createMainBrowserWindow from "./pages/mainBrowserWindow.js";
 import { setupDownloadDirectoryHandlers, getDownloadDirectory } from "./settings/downloadDirectory.js";
 import { createYtDlpWrap } from "./download/ytDlp.js";
 import { registerVideoInfoHandler } from "./download/handlers/videoInfo.js";
+import { registerPlaylistInfoHandler } from "./download/handlers/playlistInfo.js";
 import { registerDownloaderHandler } from "./download/handlers/downloader.js";
 import { registerVersionInfoHandler } from "./settings/handlers/versionInfo.js";
 import { navigatePage } from "./pages/navigatePage.js";
@@ -10,15 +11,17 @@ import { navigatePage } from "./pages/navigatePage.js";
 async function main() {
   await app.whenReady();
   const browserWindow = createMainBrowserWindow();
-  
   const ytDlpWrap = await createYtDlpWrap();
 
   // Handler de versión
   registerVersionInfoHandler(ipcMain, app);
   setupDownloadDirectoryHandlers(ipcMain, app);
+  
+  browserWindow.maximize();
   navigatePage("index", browserWindow);
   // Registrar handlers de info y descarga
   registerVideoInfoHandler(ipcMain, ytDlpWrap);
+  registerPlaylistInfoHandler(ipcMain, ytDlpWrap);
   registerDownloaderHandler(ipcMain, ytDlpWrap, getDownloadDirectory);
 }
 

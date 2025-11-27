@@ -6,12 +6,18 @@ body {
 }
 
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    height: 100dvh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     gap: 16px;
+}
+
+.container-loading {
+    display: flex;
+    flex-direction: column;
 }
 
 .header-icon {
@@ -19,12 +25,22 @@ body {
 }
 
 .app-header {
+    margin: 32px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 16px;
     margin-bottom: 16px;
     position: relative;
+
+    .header-content {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+    }
 }
 
 .title {
@@ -289,4 +305,166 @@ progress::-moz-progress-bar {
     text-align: center;
     font-size: 14px;
     color: #9ca3af;
+}
+
+.playlist-view {
+    width: 100%;
+    max-width: 800px;
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.playlist-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.playlist-header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.playlist-title {
+    font-size: 20px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.playlist-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-playlist-select-all,
+.btn-playlist-deselect-all {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #374151;
+    background: #1a1a1a;
+    color: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.btn-playlist-select-all:hover,
+.btn-playlist-deselect-all:hover {
+    background: #2a2a2a;
+    border-color: #4b5563;
+}
+
+.playlist-counter {
+    font-size: 14px;
+    color: #9ca3af;
+}
+
+.playlist-videos {
+    max-height: 60vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.playlist-videos::-webkit-scrollbar {
+    width: 8px;
+}
+
+.playlist-videos::-webkit-scrollbar-track {
+    background: #111;
+    border-radius: 4px;
+}
+
+.playlist-videos::-webkit-scrollbar-thumb {
+    background: #374151;
+    border-radius: 4px;
+}
+
+.playlist-videos::-webkit-scrollbar-thumb:hover {
+    background: #4b5563;
+}
+
+.playlist-video-item {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.playlist-video-item:hover {
+    border-color: #333;
+    background: #151515;
+}
+
+.playlist-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.playlist-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.playlist-video-content {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex: 1;
+}
+
+.playlist-video-thumb {
+    width: 120px;
+    height: 68px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #222;
+    flex-shrink: 0;
+}
+
+.playlist-video-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.playlist-video-title {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.playlist-video-duration {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.playlist-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #222;
+}
+
+.playlist-download-btn {
+    flex: 1;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
 }

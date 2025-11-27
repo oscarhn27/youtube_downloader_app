@@ -6,9 +6,20 @@
 export function isValidYouTubeUrl(url) {
   try {
     const urlObj = new URL(url)
+    const validHosts = ['www.youtube.com', 'youtube.com', 'youtu.be', 'm.youtube.com', 'music.youtube.com']
+    const validPaths = [
+      '/watch',
+      '/embed',
+      '/v/',
+      '/playlist',
+      '/channel',
+      '/c/',
+      '/user'
+    ]
+    
     return (
-      (urlObj.hostname === 'www.youtube.com' || urlObj.hostname === 'youtube.com' || urlObj.hostname === 'youtu.be') &&
-      (urlObj.pathname.includes('/watch') || urlObj.pathname.includes('/embed') || urlObj.pathname.includes('/v/') || urlObj.pathname.length > 1)
+      validHosts.includes(urlObj.hostname) &&
+      (validPaths.some(path => urlObj.pathname.includes(path)) || urlObj.pathname.length > 1)
     )
   } catch {
     return false
