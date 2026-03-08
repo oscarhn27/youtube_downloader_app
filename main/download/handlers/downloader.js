@@ -12,6 +12,7 @@ export function registerDownloaderHandler(ipcMain, ytDlpWrap, getDownloadDirecto
 
     const commonArgs = [
       url,
+      "--js-runtimes", "bun",
       "--no-playlist",
       "--newline",
       "--progress-template",
@@ -94,6 +95,7 @@ export function registerDownloaderHandler(ipcMain, ytDlpWrap, getDownloadDirecto
 
       const commonArgs = [
         url,
+        "--js-runtimes", "bun",
         "--no-playlist",
         "--newline",
         "--progress-template",

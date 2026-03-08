@@ -57,7 +57,7 @@ async function copyBinaries() {
   return chmod(dst, '777')
 }
 export async function getVideoInfo(ytDlpWrap, url) {
-  const info = await ytDlpWrap.getVideoInfo(url);
+  const info = await ytDlpWrap.getVideoInfo([url, '--js-runtimes', 'bun']);
   let thumbnail = undefined;
   if (Array.isArray(info.thumbnails) && info.thumbnails.length > 0) {
     const sorted = [...info.thumbnails].sort((a, b) => (b.width || 0) - (a.width || 0));
@@ -78,7 +78,7 @@ export async function getPlaylistInfo(ytDlpWrap, url) {
   // Intentar obtener información básica para determinar si es playlist
   let playlistInfo;
   try {
-    playlistInfo = await ytDlpWrap.getVideoInfo(url);
+    playlistInfo = await ytDlpWrap.getVideoInfo([url, '--js-runtimes', 'bun']);
   } catch (e) {
     throw new Error('La URL no es válida o no se pudo obtener información');
   }
